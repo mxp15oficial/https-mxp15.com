@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Plataforma</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "dayjs": "https://esm.sh/dayjs"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <header class="header">
+      <div class="brand">
+        <img src="logo.png" alt="logo" class="logo" onerror="this.style.display='none'"/>
+        <span class="title">Plataforma</span>
+      </div>
+      <div class="cta">
+        <button id="btnSubscribe" class="btn primary">Assinar</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="h1">Conteúdo exclusivo. Acesso rápido.</h1>
+        <p class="lead">Assine hoje e tenha acesso imediato, com suporte 24/7 e ofertas especiais para parceiros.</p>
+        <div class="actions">
+          <button id="btnGetAccess" class="btn primary">Quero Acesso</button>
+          <button id="btnPreview" class="btn outline">Ver Prévia</button>
+        </div>
+
+        <div class="info-grid">
+          <div class="info">
+            <strong id="price">R$19,90</strong>
+            <span>por mês</span>
+          </div>
+          <div class="info">
+            <strong id="visitors">0</strong>
+            <span>visitantes online</span>
+          </div>
+          <div class="info">
+            <strong id="satisfaction">99%</strong>
+            <span>satisfação</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <div class="card-carousel" id="carousel">
+          <div class="card active">Destaque 1</div>
+          <div class="card">Destaque 2</div>
+          <div class="card">Destaque 3</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Conteúdo Premium</h3>
+        <p>Material novo todas as semanas, otimizado para celular.</p>
+      </div>
+      <div class="feature">
+        <h3>Pagamentos Seguros</h3>
+        <p>Integração com gateways e suporte a PIX/cartões.</p>
+      </div>
+      <div class="feature">
+        <h3>Programa de Afiliados</h3>
+        <p>Links com tracking UID/PID para rastreamento de referências.</p>
+      </div>
+    </section>
+
+    <section class="subscribe" id="subscribeSection">
+      <div class="sheet">
+        <h2>Assine agora</h2>
+        <form id="subscribeForm" autocomplete="off">
+          <input type="hidden" id="pidField" name="pid" />
+          <div class="row">
+            <label>
+              Nome
+              <input type="text" id="name" name="name" required />
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              E-mail
+              <input type="email" id="email" name="email" required />
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              Método de pagamento
+              <select id="payment" name="payment">
+                <option value="card">Cartão</option>
+                <option value="pix">PIX</option>
+              </select>
+            </label>
+          </div>
+          <div class="row actions-row">
+            <button type="submit" class="btn primary">Confirmar</button>
+            <button type="button" id="btnCancel" class="btn ghost">Cancelar</button>
+          </div>
+        </form>
+        <p class="footnote">Ao assinar, você concorda com nossos termos.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Plataforma • <a href="#" id="privacy">Privacidade</a></div>
+    </footer>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
