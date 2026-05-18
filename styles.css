@@ -1,41 +1,12 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
+    margin: 0;
+    padding: 0;
+    background: black;
+    text-align: center;
 }
 
-.header {
-  background: #000;
-  padding: 20px;
-  text-align: center;
-}
-
-.hero {
-  text-align: center;
-  padding: 50px;
-}
-
-button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 10px;
-}
-.hero button {
-    display: block;
-    margin: 15px auto;
-    width: 250px;
-}
-
-.hero p {
-  margin-top: 20px;
-  line-height: 1.5;
-}
-
-.pricing {
-  margin-top: 30px;
-  text-align: center;
+img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
 }
