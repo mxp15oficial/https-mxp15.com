@@ -186,3 +186,89 @@ body{
 .categorias button:hover{
     background:#1f7cff;
 }
+
+/* ======================================= */
+/*  TELA DE LOGIN (ESTILOS PARA O INDEX.HTML) */
+/* ======================================= */
+
+/* Alinhamento exclusivo para a página de login */
+body:has(.login-box) {
+    display: flex;
+    justify-content: center;  /* Centraliza na horizontal */
+    align-items: center;      /* Centraliza na vertical */
+    min-height: 100vh;
+}
+
+/* Caixa principal que segura tudo (O Círculo Vermelho) */
+.login-box {
+    display: flex;
+    flex-direction: column;   /* Força os elementos um abaixo do outro */
+    align-items: center;      /* Centraliza tudo verticalmente */
+    width: 90%;               /* Ocupa a largura da tela do celular */
+    max-width: 320px;         /* Limita o tamanho máximo */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Configuração da Foto/Logo (Topo) */
+.login-box img {
+    width: 140px;             /* Ajuste o tamanho da foto aqui */
+    height: auto;
+    margin-bottom: 20px;      /* Empurra o texto de login para baixo */
+    border-radius: 12px;      /* Arredonda as bordas da foto */
+}
+
+/* Título "Login" */
+.login-box h1 {
+    font-size: 26px;
+    margin: 0 0 25px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Configuração dos campos de Usuário e Senha (Traços Vermelhos) */
+.login-box input {
+    width: 100%;              /* Faz o campo ocupar toda a largura da caixa */
+    padding: 14px;
+    margin-bottom: 12px;      /* Espaço padrão entre os campos */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #13203d;      /* Fundo escuro combinando com seus jogos */
+    color: white;
+    border-radius: 10px;
+    box-sizing: border-box;   /* Garante que não passe do limite da tela */
+    font-size: 16px;
+}
+
+/* Remove a linha azul ao clicar nos campos */
+.login-box input:focus {
+    outline: none;
+    border-color: #1f7cff;    /* Borda azul ao digitar */
+}
+
+/* Configuração dos Botões e Links de navegação */
+.login-box button, 
+.login-box a {
+    width: 100%;              /* Deixa os botões alinhados na mesma largura */
+    text-decoration: none;
+}
+
+/* Botão Entrar e Botão Cadastrar */
+.login-box button {
+    padding: 14px;
+    background: #1f7cff;      /* Azul padrão dos seus botões atuais */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;      /* Espaço entre os botões */
+    font-size: 18px;
+}
+
+/* Deixa o botão de cadastrar com uma cor diferente se quiser destacar */
+.login-box a button {
+    background: #19b45b;      /* Verde padrão das suas ações */
+    margin-top: 5px;
+}
