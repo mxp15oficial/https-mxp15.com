@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MXP$15</title>
 
-  <!-- CORRIGIDO: Vinculado ao seu arquivo real estilos.css -->
+  <!-- Vinculado corretamente à sua pasta public -->
   <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -14,126 +14,66 @@
   <!-- TOPO -->
   <div class="topo">
     <div class="logo">MXP$15</div>
-
-    <div class="saldo">
-      R$ 100,00
-    </div>
+    <div class="saldo">R$ 100,00</div>
   </div>
 
   <!-- BOTOES -->
   <div class="acoes">
-
-    <button onclick="window.location.href='deposito.html'">
-      Depósito
-    </button>
-
-    <button onclick="window.location.href='saque.html'">
-      Saque
-    </button>
-
+    <button onclick="window.location.href='deposito.html'">Depósito</button>
+    <button onclick="window.location.href='saque.html'">Saque</button>
   </div>
   
   <!-- BANNER -->
   <div class="banner">
-
     <h2>🎉 Bem-vindo ao MXP$15</h2>
-
     <p>Promoções exclusivas todos os dias.</p>
-
-    <button onclick="window.location.href='promocao.html'">
-        VER PROMOÇÕES
-    </button>
-
+    <button onclick="window.location.href='promocao.html'">VER PROMOÇÕES</button>
   </div>
 
   <!-- CATEGORIAS -->
   <div class="categorias">
-
-    <button>🔥 Popular</button>
-
+    <button class="active">🔥 Popular</button>
     <button>🐯 PG</button>
-
     <button>🎰 Pragmatic</button>
-
     <button>🎲 Evolution</button>
-
   </div>
 
   <!-- JOGOS -->
   <section class="games-section">
-
     <h2>🔥 Jogos Populares</h2>
 
     <div class="games-grid">
 
+      <!-- JOGO 1 -->
       <div class="game-card">
-        <img src="4085.jpg" alt="Fortune Tiger">
-
+        <img src="https://unsplash.com" alt="Fortune Tiger">
         <p>🐯 Fortune Tiger</p>
-
-        <button onclick="window.location.href='jogo.html'">
-          Jogar
-        </button>
+        <button onclick="window.location.href='jogo.html'">Jogar</button>
       </div>
 
+      <!-- JOGO 2 -->
       <div class="game-card">
-        <img src="4085.jpg" alt="Fortune Rabbit">
-
+        <img src="https://unsplash.com" alt="Fortune Rabbit">
         <p>🐰 Fortune Rabbit</p>
-
-        <button onclick="window.location.href='jogo.html'">
-          Jogar
-        </button>
+        <button onclick="window.location.href='jogo.html'">Jogar</button>
       </div>
 
+      <!-- JOGO 3 -->
       <div class="game-card">
-        <img src="4085.jpg" alt="Fortune Dragon">
-
+        <img src="https://unsplash.com" alt="Fortune Dragon">
         <p>🐲 Fortune Dragon</p>
-
-        <button onclick="window.location.href='jogo.html'">
-          Jogar
-        </button>
-      </div>
-
-      <div class="game-card">
-        <img src="4085.jpg" alt="Fortune Ox">
-
-        <p>🐂 Fortune Ox</p>
-
-        <button onclick="window.location.href='jogo.html'">
-          Jogar
-        </button>
+        <button onclick="window.location.href='jogo.html'">Jogar</button>
       </div>
 
     </div>
-
   </section>
 
   <!-- MENU INFERIOR -->
   <nav class="menu-bottom">
-
-    <!-- CORRIGIDO: Agora aponta exatamente para o seu arquivo pagina inicial.html -->
-    <a href="página inicial.html">
-      🏠
-      <span>Início</span>
-    </a>
-
-    <a href="promocao.html">
-      🎁
-      <span>Promoção</span>
-    </a>
-
-    <a href="vip.html">
-      👥
-      <span>Convidar</span>
-    </a>
-
-    <a href="perfil.html">
-      👤
-      <span>Perfil</span>
-    </a>
-
+    <a href="página inicial.html" class="active">🏠 <span>Início</span></a>
+    <a href="promocao.html">🎁 <span>Promoção</span></a>
+    <a href="convite.html">👥 <span>Convidar</span></a>
+    <a href="perfil.html">👤 <span>Perfil</span></a>
   </nav>
 
   <script src="script.js"></script>
