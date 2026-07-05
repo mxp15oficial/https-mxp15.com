@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CORRIGIDO: Vinculado ao seu arquivo real estilos.css -->
+    <link rel="stylesheet" href="estilos.css">
+    
+    <script>
+    // Se o usuário JÁ estiver logado, vai direto para a página inicial
+    let usuarioLogado = localStorage.getItem("usuario");
+    if (usuarioLogado) {
+        window.location.href = "página inicial.html";
+    }
+    </script>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <!-- Imagem/logo carregando da raiz -->
+        <img src="4085.jpg" width="150" alt="Logo">
+
+        <h1>Login</h1>
+
+        <br>
+
+        <form id="formLogin">
+            <!-- Campo usuário (pode ser o nome cadastrado ou e-mail) -->
+            <input type="text" id="loginUsuario" placeholder="Usuário ou e-mail" required>
+            <br><br>
+
+            <!-- Campo senha -->
+            <input type="password" id="loginSenha" placeholder="Senha" required>
+            <br><br>
+
+            <!-- Botão entrar (envia o formulário para validação) -->
+            <button type="submit">
+                Entrar
+            </button>
+        </form>
+
+        <br><br>
+
+        <!-- Botão cadastro apontando corretamente para o cadastro.html -->
+        <button onclick="window.location.href='cadastro.html'">
+            Cadastrar
+        </button>
+
+    </div>
+
+    <script>
+    document.getElementById("formLogin").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let usuarioDigitado = document.getElementById("loginUsuario").value.trim();
+        let senhaDigitada = document.getElementById("loginSenha").value;
+
+        // Busca o que foi registrado no arquivo cadastro.html
+        let usuarioSalvo = localStorage.getItem("usuario");
+        let senhaSalva = localStorage.getItem("senha");
+
+        // Verifica se as credenciais batem
+        if (usuarioDigitado === usuarioSalvo && senhaDigitada === senhaSalva && usuarioSalvo !== null) {
+            alert("Login efetuado com sucesso!");
+            window.location.href = "página inicial.html";
+        } else {
+            alert("Usuário ou senha incorretos! Se não tiver conta, clique em Cadastrar.");
+        }
+    });
+    </script>
+
+</body>
+</html>
