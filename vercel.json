@@ -1,3 +1,12 @@
 {
-  "cleanUrls": true
+  "rewrites": [
+    {
+      "source": "/p%C3%A1gina%20inicial",
+      "destination": "/public/home.html"
+    },
+    {
+      "source": "/página inicial",
+      "destination": "/public/home.html"
+    }
+  ]
 }
