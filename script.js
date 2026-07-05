@@ -1,5 +1,5 @@
 function entrar() {
-    window.location.href = "Página inicial.html";
+    window.location.href = "home.html";
 }
 
 function cadastrar() {
