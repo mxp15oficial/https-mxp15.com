@@ -1,11 +1,11 @@
 function entrar() {
-    window.location.href = "home.html";
+    window.location.href = "/home.html";
 }
 
 function cadastrar() {
-    window.location.href = "cadastro.html";
+    window.location.href = "/cadastro.html";
 }
 
 function entrarJogo() {
-    window.location.href = "jogo.html";
+    window.location.href = "/jogo.html";
 }
