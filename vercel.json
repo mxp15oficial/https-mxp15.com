@@ -1,12 +1,26 @@
 {
+  "version": 2,
   "rewrites": [
     {
       "source": "/p%C3%A1gina%20inicial",
-      "destination": "/public/home.html"
+      "destination": "/home.html"
     },
     {
       "source": "/página inicial",
-      "destination": "/public/home.html"
+      "destination": "/home.html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
     }
   ]
 }
