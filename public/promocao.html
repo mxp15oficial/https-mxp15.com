@@ -19,6 +19,9 @@
             max-width: 100%;
             overflow-x: hidden;
             box-sizing: border-box;
+            font-family: sans-serif;
+            text-align: center;
+            color: #ffffff;
         }
 
         /* CONTAINER PRINCIPAL DA BARRA (Totalmente transparente e com trava horizontal) */
@@ -67,9 +70,30 @@
 
         /* BOTÃO ATIVO (Mantém o destaque sutil) */
         .menu-tab-btn.active {
-            color: #3b82f6;
-            border-bottom: 2px solid #3b82f6;
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
             padding-bottom: 2px;
+        }
+
+        /* ESTILO DOS BOTÕES GRANDES DE CONVITE (Preto com letras brancas) */
+        .login-box button:not(.menu-tab-btn) {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 340px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.2s;
+        }
+
+        .login-box button:not(.menu-tab-btn):active {
+            background-color: #222222;
         }
     </style>
 </head>
@@ -78,6 +102,7 @@
 
     <div class="login-box">
 
+        <!-- BARRA SUPERIOR TRANSPARENTE E COMPACTA -->
         <div class="scroll-menu-container">
             <div class="scroll-menu-list">
                 <button class="menu-tab-btn active">Eventos</button>
@@ -89,39 +114,41 @@
             </div>
         </div>
 
-        <div style="background-color: #1a1f2c; padding: 30px 20px; text-align: center; border-radius: 16px; font-family: sans-serif; margin-bottom: 20px;">
+        <!-- Bloco do Topo da Promoção -->
+        <div style="background-color: #1a1f2c; padding: 30px 20px; text-align: center; border-radius: 16px; margin-bottom: 20px;">
             
+            <!-- Container Adaptável da Imagem -->
             <div style="margin-bottom: 20px; display: inline-block; width: 100%; max-width: 320px;">
-                <img src="IMG-20260707-WA0001.jpg" alt="Promoção Pesca" style="width: 100%; max-width: 320px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <img src="IMG-20260707-WA0001.jpg" alt="Promoção Pesca" style="width: 100%; max-width: 360px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
             </div>
 
+            <!-- Texto Puxado para Cima da Imagem -->
             <h2 style="color: #ffffff; font-size: 24px; font-weight: 700; margin: 0; margin-top: -65px; position: relative; z-index: 10; letter-spacing: 0.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
                 Promoções MXP$15
             </h2>
 
         </div>
 
-        <p>Convide amigos e ganhe bônus.</p>
-
-        <br>
+        <!-- Seção de Convites e Botões Inferiores -->
+        <p style="margin-bottom: 20px; font-size: 16px;">Convide amigos e ganhe bônus.</p>
 
         <button onclick="window.location.href='convite.html'">
             Convide 1 pessoa = R$30
         </button>
 
-        <br><br>
+        <br>
 
         <button>
             Convide 10 pessoas = R$300
         </button>
 
-        <br><br>
+        <br>
 
         <button>
             Convide 100 pessoas = R$1000
         </button>
 
-        <br><br>
+        <br>
 
         <button onclick="window.location.href='index.html'">
             Voltar
