@@ -1,4 +1,5 @@
-font-sizeml lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -6,23 +7,35 @@ font-sizeml lang="pt-BR">
     <title>Promoções</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* CONTAINER PRINCIPAL DA BARRA (Trava o arrasto da página) */
+        /* Bloqueia o balanço da página para os lados no celular */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        /* CONTAINER PRINCIPAL DA BARRA (Totalmente transparente e com trava horizontal) */
         .scroll-menu-container {
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             background-color: transparent;
-            border-radius: 8px;
             margin-bottom: 20px;
             padding: 12px 0;
             position: relative;
             z-index: 999;
-            /* Força o navegador do celular a rolar apenas de lado e ignorar a página */
             touch-action: pan-x; 
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Oculta completamente qualquer barra visual */
+        /* Oculta completamente a barra visual de rolagem */
         .scroll-menu-container::-webkit-scrollbar {
             display: none;
             width: 0;
@@ -37,7 +50,7 @@ font-sizeml lang="pt-BR">
             width: max-content;
         }
 
-        /* BOTÕES DO MENU */
+        /* BOTÕES DO MENU (Tamanho reduzido e fundo transparente) */
         .menu-tab-btn {
             color: #8fa0b4;
             font-family: sans-serif;
@@ -45,18 +58,18 @@ font-sizeml lang="pt-BR">
             font-weight: 600;
             background-color: transparent;
             border: none;
-            padding: 6px 12px;
+            padding: 4px 8px;
             cursor: pointer;
             white-space: nowrap;
             transition: color 0.2s ease;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* BOTÃO ATIVO (EVENTOS) */
+        /* BOTÃO ATIVO (Mantém o destaque sutil) */
         .menu-tab-btn.active {
             color: #3b82f6;
-            border-bottom: 3px solid #3b82f6;
-            padding-bottom: 3px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 2px;
         }
     </style>
 </head>
@@ -78,8 +91,8 @@ font-sizeml lang="pt-BR">
 
         <div style="background-color: #1a1f2c; padding: 30px 20px; text-align: center; border-radius: 16px; font-family: sans-serif; margin-bottom: 20px;">
             
-            <div style="margin-bottom: 20px; display: inline-block;">
-                <img src="IMG-20260707-WA0001.jpg" alt="Promoção Pesca" style="width: 320px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+            <div style="margin-bottom: 20px; display: inline-block; width: 100%; max-width: 320px;">
+                <img src="IMG-20260707-WA0001.jpg" alt="Promoção Pesca" style="width: 100%; max-width: 320px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
             </div>
 
             <h2 style="color: #ffffff; font-size: 24px; font-weight: 700; margin: 0; margin-top: -65px; position: relative; z-index: 10; letter-spacing: 0.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
