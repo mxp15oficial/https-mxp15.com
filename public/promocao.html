@@ -5,27 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promoções</title>
-
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Menu de Abas Superior */
+        .top-nav-menu {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: #161c28;
+            padding: 12px 5px;
+            gap: 15px;
+            border-bottom: 1px solid #1e2636;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .top-nav-menu::-webkit-scrollbar {
+            display: none; /* Oculta a barra de rolagem no celular */
+        }
+        .nav-item {
+            color: #8fa0b4;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .nav-item.active {
+            color: #3b82f6; /* Azul destacado para a aba atual */
+            border-bottom: 2px solid #3b82f6;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="login-box">
 
-                <!-- Bloco do Topo da Promoção -->
+        <div class="top-nav-menu">
+            <a class="nav-item active">Eventos</a>
+            <a class="nav-item">Rebate</a>
+            <a class="nav-item">VIP</a>
+            <a class="nav-item">Código de Resgate</a>
+            <a class="nav-item">Histórico</a>
+            <a class="nav-item">Pendente</a>
+        </div>
+
         <div style="background-color: #1a1f2c; padding: 30px 20px; text-align: center; border-radius: 16px; font-family: sans-serif; margin-bottom: 20px;">
             
-            <!-- Container da Imagem Centralizada -->
             <div style="margin-bottom: 20px; display: inline-block;">
                 <img src="IMG-20260707-WA0001.jpg" alt="Promoção Pesca" style="width: 320px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
             </div>
 
-            <!-- Texto Exatamente Abaixo da Imagem -->
-                        <!-- Texto Puxado para Cima da Imagem -->
             <h2 style="color: #ffffff; font-size: 24px; font-weight: 700; margin: 0; margin-top: -65px; position: relative; z-index: 10; letter-spacing: 0.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
                 Promoções MXP$15
             </h2>
+
         </div>
 
         <p>Convide amigos e ganhe bônus.</p>
@@ -33,7 +68,7 @@
         <br>
 
         <button onclick="window.location.href='convite.html'">
-    Convide 1 pessoa = R$30
+            Convide 1 pessoa = R$30
         </button>
 
         <br><br>
@@ -50,7 +85,7 @@
 
         <br><br>
 
-        <button onclick="window.location.href='home.html'">
+        <button onclick="window.location.href='index.html'">
             Voltar
         </button>
 
