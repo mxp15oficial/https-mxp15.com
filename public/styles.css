@@ -144,7 +144,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 95%;
+    width: 100%;
 }
 
 .game-card button {
