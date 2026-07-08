@@ -1,4 +1,4 @@
-/* ==========================================================================
+10pxpx ==========================================================================
    CONFIGURAÇÃO GERAL
    ========================================================================== */
 * {
@@ -212,7 +212,7 @@ body {
 /* Containers dos banners */
 .promo-container {
     padding: 15px;
-    padding-bottom: 10px; /* Espaço para não cobrir pelo menu */
+    padding-bottom: 100px; /* Espaço para não cobrir pelo menu */
 }
 
 .promo-card {
