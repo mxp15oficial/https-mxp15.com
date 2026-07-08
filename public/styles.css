@@ -351,5 +351,5 @@ body:has(.login-box) {
 
 /* Garante que cada botão não encolha */
 .container-scroll-horizontal button {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
