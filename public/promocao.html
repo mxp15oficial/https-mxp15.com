@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções</title>
+    <style>
+        body { background-color: #0b111e; color: white; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+        
+        /* Menu Superior */
+        .menu-container { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+        .menu-btn { padding: 10px 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; }
+        .btn-eventos { background-color: #333; }
+        .btn-blue { background-color: #007bff; }
+
+        /* Banner */
+        .banner { width: 100%; max-width: 350px; border-radius: 15px; margin-bottom: 20px; }
+        
+        /* Botões de Convite */
+        .convite-btn { 
+            display: block; width: 100%; max-width: 350px; margin: 15px auto; 
+            padding: 20px; background-color: #1a1a1a; color: white; 
+            border: 1px solid #333; border-radius: 10px; font-weight: bold; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Superior -->
+    <div class="menu-container">
+        <button class="menu-btn btn-eventos">Eventos</button>
+        <button class="menu-btn btn-blue">Rebate</button>
+        <button class="menu-btn btn-blue">VIP</button>
+        <button class="menu-btn btn-blue">Cód</button>
+    </div>
+
+    <!-- Banner -->
+    <img src="IMG-20260707-WA.jpg" class="banner" alt="Promoções MXP$15">
+
+    <!-- Texto Informativo -->
+    <p>Convide amigos e ganhe bônus.</p>
+
+    <!-- Botões de Convite -->
+    <button class="convite-btn" onclick="window.location.href='convite.html'">Convide 1 pessoa = R$30</button>
+    <button class="convite-btn" onclick="window.location.href='convite10.html'">Convide 10 pessoas = R$300</button>
+    <button class="convite-btn" onclick="window.location.href='convite100.html'">Convide 100 pessoas = R$1000</button>
+    
+    <!-- Botão Voltar -->
+    <button class="convite-btn" style="background-color: #333;" onclick="window.location.href='index.html'">Voltar</button>
+
+</body>
+</html>
