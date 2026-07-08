@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rebate</title>
+    <style>
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #0d131f;
+            font-family: sans-serif;
+            color: #ffffff;
+        }
+
+        /* CONTAINER DO MENU SUPERIOR */
+        .scroll-menu-container {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 12px 0;
+            background-color: #0d131f;
+        }
+        .scroll-menu-container::-webkit-scrollbar { display: none; }
+        .scroll-menu-list { display: flex; gap: 10px; padding: 0 15px; width: max-content; }
+        
+        .menu-tab-btn {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #333333 !important;
+            border-radius: 8px !important;
+            padding: 10px 18px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .menu-tab-btn.active {
+            background-color: #222222 !important;
+            border-color: #ffffff !important;
+        }
+
+        /* INFORMAÇÕES DE COLETA (Texto Amarelo) */
+        .coleta-info {
+            font-size: 11px;
+            text-align: center;
+            padding: 10px 5px;
+            color: #cccccc;
+            background-color: rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+        .coleta-info span { color: #f9a825; font-weight: bold; }
+
+        /* CORPO PRINCIPAL COM MENU LATERAL + CONTEÚDO */
+        .main-layout {
+            display: flex;
+            padding: 0 10px;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        /* BARRA LATERAL ESQUERDA */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 75px;
+            flex-shrink: 0;
+        }
+        .sidebar-item {
+            background-color: #161c28;
+            border-radius: 12px;
+            padding: 10px 5px;
+            text-align: center;
+            font-size: 11px;
+            color: #8fa0ba;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .sidebar-item.active {
+            border-color: #3b82f6;
+            color: #ffffff;
+            background-color: #1e293b;
+        }
+
+        /* BOTÕES DE AÇÃO DA SIDEBAR */
+        .btn-receber {
+            background-color: #555555;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 0;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .btn-historico {
+            background-color: #f59e0b;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 0;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        /* LISTA DE CARDS DA DIREITA */
+        .cards-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+        .cards-container::-webkit-scrollbar { display: none; }
+
+        .card {
+            background-color: #131924;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        .card-row-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+        .card-brand { font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;}
+        .card-brand span { font-size: 10px; color: #64748b; font-weight: normal;}
+        .card-arrow { color: #64748b; font-size: 14px; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+        
+        .value-white { color: #ffffff; font-weight: bold; }
+        .value-yellow { color: #f59e0b; font-weight: bold; }
+
+        /* BARRA DE PROGRESSO CINZA */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #1e293b;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 10px;
+            margin-top: 2px;
+            width: 85%;
+        }
+        .progress-text span { color: #f59e0b; }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-menu-container">
+        <div class="scroll-menu-list">
+            <button class="menu-tab-btn" onclick="window.location.href='promocao.html'">Eventos</button>
+            <button class="menu-tab-btn active">Rebate</button>
+            <button class="menu-tab-btn">VIP</button>
+            <button class="menu-tab-btn">Código de Resgate</button>
+            <button class="menu-tab-btn">Histórico</button>
+            <button class="menu-tab-btn">Pendente</button>
+        </div>
+    </div>
+
+    <div class="coleta-info">
+        Pode ser coletado hoje: <span>0,00</span> &nbsp;|&nbsp; Disponível para coleta amanhã: <span>0,00</span>
+    </div>
+
+    <div class="main-layout">
+        
+        <div class="sidebar">
+            <div class="sidebar-item">
+                Cartas
+            </div>
+            <div class="sidebar-item active">
+                Slot
+            </div>
+            <div class="sidebar-item">
+                Pesca
+            </div>
+            
+            <button class="btn-receber">Receber</button>
+            <button class="btn-historico">Histórico</button>
+        </div>
+
+        <div class="cards-container">
+            
+            <div class="card">
+                <div class="card-row-top">
+                    <div class="card-brand">PG <span>Aposta</span></div>
+                    <div><span class="value-white">0,00</span> Taxa de reembolso <span class="value-white">0,00%</span></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-text">Aposte 1,00 para receber <span>0,30%</span></div>
+                    <div>Coletável <span class="value-yellow">0,00</span></div>
+                </div>
+                <div class="card-arrow">&gt;</div>
+            </div>
+
+            <div class="card">
+                <div class="card-row-top">
+                    <div class="card-brand">TaDa <span>Aposta</span></div>
+                    <div><span class="value-white">0,00</span> Taxa de reembolso <span class="value-white">0,00%</span></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-text">Aposte 1,00 para receber <span>0,30%</span></div>
+                    <div>Coletável <span class="value-yellow">0,00</span></div>
+                </div>
+                <div class="card-arrow">&gt;</div>
+            </div>
+
+            <div class="card">
+                <div class="card-row-top">
+                    <div class="card-brand">CQ9 <span>Aposta</span></div>
+                    <div><span class="value-white">0,00</span> Taxa de reembolso <span class="value-white">0,00%</span></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-text">Aposte 1,00 para receber <span>0,20%</span></div>
+                    <div>Coletável <span class="value-yellow">0,00</span></div>
+                </div>
+                <div class="card-arrow">&gt;</div>
+            </div>
+
+            <div class="card">
+                <div class="card-row-top">
+                    <div class="card-brand">JDB <span>Aposta</span></div>
+                    <div><span class="value-white">0,00</span> Taxa de reembolso <span class="value-white">0,00%</span></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-text">Aposte 1,00 para receber <span>0,20%</span></div>
+                    <div>Coletável <span class="value-yellow">0,00</span></div>
+                </div>
+                <div class="card-arrow">&gt;</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
