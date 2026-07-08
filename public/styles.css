@@ -80,14 +80,16 @@ body {
    BANNER DO BÔNUS (ESTILO 55HH)
    ========================================================================== */
 .banner {
-    margin: 0 16px 16px 16px;
+    width: 320px;           /* Define a largura */
+    max-width: 100%;        /* Garante que não ultrapasse a tela */
+    margin: 0 auto 16px auto; /* Centraliza o banner */
     padding: 24px 20px;
     border-radius: 16px;
-    background: linear-gradient(135deg, #0052ff 0%, #002db3 100%); /* Fundo azul vibrante */
+    background: linear-gradient(135deg, ...);
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 82, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 82, ...);
 }
 
 .banner h2 {
