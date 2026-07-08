@@ -75,7 +75,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -212,7 +212,7 @@ body {
 /* Containers dos banners */
 .promo-container {
     padding: 15px;
-    padding-bottom: 100px; /* Espaço para não cobrir pelo menu */
+    padding-bottom: 10px; /* Espaço para não cobrir pelo menu */
 }
 
 .promo-card {
