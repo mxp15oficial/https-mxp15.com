@@ -334,7 +334,22 @@ body:has(.login-box) {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Remove a barra de rolagem visualmente */
-.promo-buttons-container::-webkit-scrollbar {
+.container-scroll-horizontal {
+    display: flex;
+    flex-wrap: nowrap;     /* Impede que os botões quebrem linha */
+    overflow-x: auto;      /* Habilita a rolagem horizontal */
+    gap: 10px;             /* Espaço entre os botões */
+    padding: 10px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch; /* Rolagem suave no iPhone/Android */
+}
+
+/* Esconde a barra de rolagem para ficar mais bonito */
+.container-scroll-horizontal::-webkit-scrollbar {
     display: none;
+}
+
+/* Garante que cada botão não encolha */
+.container-scroll-horizontal button {
+    flex: 0 0 auto; 
 }
