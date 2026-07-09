@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções - MXP$15</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos críticos para a página de Promoção não quebrar */
+        .promo-page-tabs { 
+            display: flex !important; 
+            overflow-x: auto; 
+            background: #171b2a; 
+            padding: 10px; 
+            gap: 10px; 
+            border-bottom: 1px solid #23283c; 
+            width: 100%;
+        }
+        .promo-page-tabs button { 
+            flex-shrink: 0; 
+            background: transparent; 
+            color: #8892b0; 
+            border: none; 
+            padding: 10px; 
+            white-space: nowrap; 
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .promo-page-tabs button.active { 
+            color: #ffffff; 
+            border-bottom: 2px solid #0076ff; 
+            font-weight: bold;
+        }
+        .promo-page-container { 
+            display: flex; 
+            flex-direction: column; 
+            padding: 15px; 
+            padding-bottom: 100px; 
+            width: 100%;
+            align-items: center;
+        }
+        .promo-page-card {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #23283c;
+        }
+        .promo-page-card img { 
+            width: 100%; 
+            display: block; 
+            height: auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <header class="promo-page-tabs">
+        <button class="active">Eventos</button>
+        <button>Rebate</button>
+        <button>VIP</button>
+        <button>Código de Resgate</button>
+        <button>Histórico</button>
+        <button>Pendente</button>
+    </header>
+
+    <main class="promo-page-container">
+        <div class="promo-page-card">
+            <img src="public/IMG_20260708_172307.png" alt="Banner Evento">
+        </div>
+        </main>
+
+    <nav class="menu-bottom">
+        <a href="home.html">🏠 <span>Início</span></a>
+        <a href="promocao.html" class="active">🎁 <span>Promoção</span></a>
+        <a href="convite.html">👥 <span>Convidar</span></a>
+        <a href="perfil.html">👤 <span>Perfil</span></a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
