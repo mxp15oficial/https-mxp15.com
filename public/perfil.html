@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perfil - MXP$15</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="perfil-container">
+
+<div class="perfil-topo">
+
+<div class="perfil-foto">
+<img src="img/perfil.png" alt="Perfil">
+</div>
+
+<div class="perfil-info">
+<h2 id="nomeUsuario">Usuário MXP$15</h2>
+
+<p>ID: <span id="idUsuario">000001</span></p>
+
+<p>Conta: <span id="contaUsuario">********</span></p>
+
+<h1 id="saldo">R$ 0,00</h1>
+
+<button onclick="atualizarSaldo()" class="btn-atualizar">
+<i class="fa-solid fa-rotate"></i>
+Atualizar Saldo
+</button>
+
+</div>
+
+</div>
+
+<div class="acoes">
+
+<button onclick="window.location.href='deposito.html'" class="btn-deposito">
+<i class="fa-solid fa-money-bill-transfer"></i>
+Depósito
+</button>
+
+<button onclick="window.location.href='saque.html'" class="btn-saque">
+<i class="fa-solid fa-wallet"></i>
+Saque
+</button>
+
+</div>
+
+<div class="vip-card">
+
+<h3>
+<i class="fa-solid fa-crown"></i>
+VIP 1
+</h3>
+
+<div class="barra-vip">
+<div class="progresso-vip"></div>
+</div>
+
+<p>Complete depósitos para subir de nível.</p>
+
+</div>
+
+<div class="menu-perfil">
+
+<a href="relatorios.html">
+<i class="fa-solid fa-chart-column"></i>
+Relatórios
+</a>
+
+<a href="convidar.html">
+<i class="fa-solid fa-user-plus"></i>
+Convidar Amigos
+</a>
+
+<a href="codigo.html">
+<i class="fa-solid fa-gift"></i>
+Código de Resgate
+</a>
+
+<a href="suporte.html">
+<i class="fa-solid fa-headset"></i>
+Suporte
+</a>
+
+<a href="seguranca.html">
+<i class="fa-solid fa-shield-halved"></i>
+Centro de Segurança
+</a>
+
+<a href="configuracoes.html">
+<i class="fa-solid fa-gear"></i>
+Configurações
+</a>
+
+<a href="login.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Sair
+</a>
+
+</div>
+
+</div>
+
+<nav class="menu-inferior">
+
+<a href="home.html">
+<i class="fa-solid fa-house"></i>
+<span>Início</span>
+</a>
+
+<a href="promocao.html">
+<i class="fa-solid fa-gift"></i>
+<span>Promoção</span>
+</a>
+
+<a href="deposito.html">
+<i class="fa-solid fa-money-bill-transfer"></i>
+<span>Depósito</span>
+</a>
+
+<a href="saque.html">
+<i class="fa-solid fa-wallet"></i>
+<span>Saque</span>
+</a>
+
+<a href="perfil.html" class="ativo">
+<i class="fa-solid fa-user"></i>
+<span>Perfil</span>
+</a>
+
+</nav>
+
+<script src="script.js"></script>
+
+</body>
+</html>
