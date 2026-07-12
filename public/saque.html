@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saque - Casino Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #0b0e14; --card-bg: #161b22; --accent-blue: #007bff; --text-main: #ffffff; --text-muted: #8b949e; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: sans-serif; margin: 0; padding: 0 20px; padding-bottom: 30px; }
+
+        .header { padding: 20px 0; display: flex; align-items: center; font-weight: bold; font-size: 1.2em; }
+        .saldo-box { background: #1c2431; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        
+        .grid-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+        .value-btn { padding: 15px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; text-align: center; cursor: pointer; color: #fff; transition: 0.2s; }
+        .value-btn.selected { border: 1px solid var(--accent-blue); background: #1c2431; color: var(--accent-blue); }
+
+        .input-manual { background: #161b22; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #30363d; color: var(--text-muted); }
+        
+        .methods { display: flex; gap: 10px; margin-bottom: 20px; }
+        .method-btn { flex: 1; padding: 12px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; text-align: center; cursor: pointer; }
+        .method-btn.active { border-color: var(--accent-blue); color: var(--accent-blue); }
+
+        .input-field { width: 100%; padding: 12px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; color: white; box-sizing: border-box; margin-bottom: 15px; }
+        
+        .btn-withdraw { width: 100%; padding: 18px; background: var(--accent-blue); border: none; border-radius: 8px; color: white; font-weight: bold; font-size: 1em; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <i class="fa-solid fa-chevron-left" style="cursor:pointer;" onclick="history.back()"></i> 
+        <span style="margin: 0 auto;">Saque</span>
+    </div>
+
+    <div class="saldo-box">
+        <div>Conta Saldo <span style="color: #d4af37;">R$ 0,20</span></div>
+        <div style="font-size: 0.8em; color: var(--text-muted); margin-top: 5px;">Você precisa apostar R$ 0,16 para sacar <a href="#" style="color: var(--accent-blue);">Ver detalhes</a></div>
+    </div>
+
+    <div class="grid-values">
+        <div class="value-btn" onclick="selecionarValor(10)">10,00</div>
+        <div class="value-btn" onclick="selecionarValor(50)">50,00</div>
+        <div class="value-btn" onclick="selecionarValor(100)">100,00</div>
+        <div class="value-btn" onclick="selecionarValor(500)">500,00</div>
+        <div class="value-btn" onclick="selecionarValor(1000)">1.000,00</div>
+        <div class="value-btn" onclick="selecionarValor(2000)">2.000,00</div>
+        <div class="value-btn" onclick="selecionarValor(5000)">5.000,00</div>
+        <div class="value-btn" onclick="selecionarValor(10000)">10.000,00</div>
+        <div class="value-btn" onclick="selecionarValor(15000)">15.000,00</div>
+    </div>
+
+    <input type="number" id="valor-saque" class="input-manual" placeholder="10,00 - 15.000,00" style="width: 100%; box-sizing: border-box;">
+
+    <div class="methods">
+        <div class="method-btn active">CPF</div>
+        <div class="method-btn">PHONE</div>
+        <div class="method-btn">EMAIL</div>
+    </div>
+
+    <input type="text" class="input-field" placeholder="Nome">
+    <input type="text" class="input-field" placeholder="CPF ID">
+
+    <button class="btn-withdraw" onclick="realizarSaque()">Retirar Agora</button>
+
+    <script>
+        function selecionarValor(valor) {
+            document.getElementById('valor-saque').value = valor;
+            document.querySelectorAll('.value-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+
+        function realizarSaque() {
+            let valor = parseFloat(document.getElementById('valor-saque').value);
+            if (valor < 10 || valor > 15000) {
+                alert("O valor de saque deve estar entre R$ 10,00 e R$ 15.000,00.");
+            } else {
+                alert("Solicitação de saque de R$ " + valor.toFixed(2) + " enviada com sucesso!");
+            }
+        }
+    </script>
+</body>
+</html>
