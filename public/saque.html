@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saque - Casino Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #0b0e14; --accent-blue: #007bff; --text-muted: #8b949e; --accent-gold: #d4af37; }
+        body { background-color: var(--bg-color); color: #ffffff; font-family: sans-serif; margin: 0; padding: 0 20px; }
+
+        .header { padding: 20px 0; display: flex; align-items: center; font-weight: bold; font-size: 1.2em; }
+        
+        /* Box de Aviso (Só aparece se tiver rollover de recompensas) */
+        #aviso-rollover { background: #1c2431; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #30363d; display: none; }
+        
+        .grid-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .value-btn { padding: 15px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; text-align: center; cursor: pointer; }
+        .value-btn.selected { border: 1px solid var(--accent-blue); background: #1c2431; color: var(--accent-blue); }
+
+        .input-manual { width: 100%; padding: 15px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; color: white; box-sizing: border-box; margin-bottom: 20px; }
+        .btn-withdraw { width: 100%; padding: 18px; background: var(--accent-blue); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <i class="fa-solid fa-chevron-left" onclick="history.back()"></i> 
+        <span style="margin: 0 auto;">Saque</span>
+    </div>
+
+    <div id="aviso-rollover">
+        <div style="color: white;">Saldo com Rollover: <span id="saldo-bloqueado" style="color: var(--accent-gold);">R$ 0,00</span></div>
+        <div style="font-size: 0.8em; color: var(--text-muted); margin-top: 5px;">
+            Aposte <span id="valor-pendente">R$ 0,00</span> para liberar seu saque.
+        </div>
+    </div>
+
+    <div class="grid-values">
+        <div class="value-btn" onclick="selecionarValor(10)">10,00</div>
+        <div class="value-btn" onclick="selecionarValor(50)">50,00</div>
+        <div class="value-btn" onclick="selecionarValor(100)">100,00</div>
+        <div class="value-btn" onclick="selecionarValor(500)">500,00</div>
+        <div class="value-btn" onclick="selecionarValor(1000)">1.000,00</div>
+        <div class="value-btn" onclick="selecionarValor(15000)">15.000,00</div>
+    </div>
+
+    <input type="number" id="valor-saque" class="input-manual" placeholder="Valor do saque">
+
+    <button class="btn-withdraw" onclick="realizarSaque()">Retirar Agora</button>
+
+    <script>
+        // Dados do Usuário
+        // 'aposta_pendente' é o valor das recompensas (VIP, Rebate, etc) que impedem o saque
+        // 'saldo_amigo' é o valor ganho com convites (pode sacar livremente)
+        const usuario = {
+            saldo_total: 150.00,
+            aposta_pendente: 100.00, // Se 0, não tem bloqueio
+            saldo_amigo: 30.00 
+        };
+
+        window.onload = function() {
+            const divAviso = document.getElementById('aviso-rollover');
+            if (usuario.aposta_pendente > 0) {
+                divAviso.style.display = 'block';
+                document.getElementById('saldo-bloqueado').innerText = 'R$ ' + usuario.aposta_pendente.toFixed(2);
+                document.getElementById('valor-pendente').innerText = 'R$ ' + usuario.aposta_pendente.toFixed(2);
+            }
+        };
+
+        function realizarSaque() {
+            let valor = parseFloat(document.getElementById('valor-saque').value);
+            
+            // Lógica: Se o valor solicitado for menor ou igual ao saldo de amigo, permite.
+            // Se for maior, ele exige que o rollover (aposta_pendente) esteja zerado.
+            if (valor > usuario.saldo_amigo && usuario.aposta_pendente > 0) {
+                alert("Bloqueado: Você possui recompensas pendentes de aposta. Cumpra o requisito para sacar valores acima de R$ " + usuario.saldo_amigo.toFixed(2));
+            } else if (valor < 10 || valor > 15000) {
+                alert("O valor de saque deve estar entre R$ 10,00 e R$ 15.000,00.");
+            } else {
+                alert("Solicitação de saque de R$ " + valor.toFixed(2) + " enviada com sucesso!");
+            }
+        }
+
+        function selecionarValor(valor) {
+            document.getElementById('valor-saque').value = valor;
+        }
+    </script>
+</body>
+</html>
