@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Afiliados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #0b0e14; --accent-gold: #d4af37; --card-bg: #161b22; }
+        body { background-color: var(--bg-color); color: #fff; font-family: sans-serif; margin: 0; padding: 20px; }
+        
+        .header { display: flex; align-items: center; font-weight: bold; margin-bottom: 20px; }
+        
+        /* Layout em fileira/tabela */
+        .progress-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .progress-item { background: var(--card-bg); padding: 15px; border-radius: 12px; display: flex; align-items: center; border: 1px solid #30363d; }
+        .bau-img { width: 50px; margin-right: 15px; }
+        
+        .btn-share { width: 100%; background: var(--accent-gold); color: #000; padding: 15px; border-radius: 12px; font-weight: bold; border: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="header"><i class="fa-solid fa-chevron-left" onclick="history.back()"></i> Programa de Afiliados</div>
+
+    <div class="stats">Progresso: <span id="contagem" style="color: var(--accent-gold);">0</span> convites</div>
+
+    <div class="progress-list" id="lista-progresso">
+        </div>
+
+    <button class="btn-share" onclick="compartilhar()">Copiar meu link de convite</button>
+
+    <script>
+        const convitesAtuais = 0; // Isso virá do seu banco de dados
+        const metas = [
+            {meta: 1, recompensa: "R$ 30,00"},
+            {meta: 5, recompensa: "R$ 100,00"},
+            {meta: 10, recompensa: "R$ 250,00"}
+        ];
+
+        function renderizarFileira() {
+            const container = document.getElementById('lista-progresso');
+            metas.forEach(item => {
+                const aberto = convitesAtuais >= item.meta;
+                container.innerHTML += `
+                    <div class="progress-item">
+                        <img class="bau-img" src="${aberto ? 'treasureBoxOpen.png' : 'treasureBoxClose.png'}">
+                        <div>
+                            <strong>Meta: ${item.meta} amigos</strong><br>
+                            <small style="color: #8b949e;">Recompensa: ${item.recompensa}</small>
+                        </div>
+                        <div style="margin-left: auto;">
+                            ${aberto ? '<i class="fa-solid fa-check" style="color:green;"></i>' : 'Bloqueado'}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function compartilhar() {
+            navigator.clipboard.writeText("https://seucassino.com/cadastro?ref=ID_USER");
+            alert("Link copiado!");
+        }
+
+        window.onload = renderizarFileira;
+    </script>
+</body>
+</html>
