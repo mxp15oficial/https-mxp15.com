@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - MXP$15</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ajustado para o nome do seu arquivo -->
+</head>
+<body>
+
+<div class="login-box">
+    <img src="4085.jpg" width="150" alt="Logo">
+    <h1>CRIAR CONTA</h1>
+    <br>
+    <form id="formCadastro">
+        <input type="text" id="usuario" placeholder="Usuário" required>
+        <br><br>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <br><br>
+        <input type="password" id="senha" placeholder="Senha" minlength="6" required>
+        <br><br>
+        <button type="submit">CADASTRAR</button>
+    </form>
+    <br><br>
+    <button type="button" onclick="window.location.href='login.html'">VOLTAR LOGIN</button>
+</div>
+
+<!-- 1. Biblioteca -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<!-- 2. Configuração -->
+<script src="supabase.js"></script>
+
+<script>
+    document.getElementById("formCadastro").addEventListener("submit", async function(e){
+        e.preventDefault();
+
+        const usuario = document.getElementById("usuario").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value;
+
+        // O cliente agora está disponível em window.supabaseClient
+        const supabase = window.supabaseClient;
+
+        try {
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: senha
+            });
+
+            if(error) throw error;
+
+            if(data.user) {
+                // Insere na tabela 'usuarios' usando o ID gerado pelo Auth
+                const { error: erroUsuario } = await supabase
+                    .from("usuarios")
+                    .insert([{
+                        id: data.user.id,
+                        usuario: usuario,
+                        email: email
+                    }]);
+
+                if(erroUsuario) throw erroUsuario;
+
+                alert("Cadastro realizado com sucesso!");
+                window.location.href = "login.html";
+            }
+        } catch(err) {
+            console.error(err);
+            alert("Erro: " + err.message);
+        }
+    });
+</script>
+
+</body>
+</html>
