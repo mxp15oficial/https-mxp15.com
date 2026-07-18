@@ -1,5 +1,7 @@
-const SUPABASE_URL = "https://guavczqfnqkshhgpyccs.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_1qUbWglTgDfCV4MIDT7qWQ_jetIG_ht";
+// supabase.js
+const SUPABASE_URL = "SUA_URL_AQUI";
+const SUPABASE_ANON_KEY = "SUA_CHAVE_AQUI";
 
-// A forma correta para a v2 do Supabase é esta:
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// É crucial que a inicialização esteja definida assim:
+window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
