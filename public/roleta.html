@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roleta de Bônus - MXP$15</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+    body {
+      background: #12121a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 { color: #e6af2e; font-size: 22px; margin-bottom: 5px; }
+    p { color: #aaa; font-size: 14px; margin-bottom: 20px; }
+    
+    /* Estrutura da Roleta Visual */
+    .roleta-container {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin: 20px auto;
+      border-radius: 50%;
+      border: 8px solid #e6af2e;
+      background: radial-gradient(circle, #2a2a40, #181824);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(230, 175, 46, 0.4);
+      transition: transform 4s cubic-bezier(0.15, 0.95, 0.15, 1);
+    }
+    .ponteiro {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 24px solid #ff4d4d;
+      z-index: 10;
+    }
+    .premio-texto {
+      font-size: 20px;
+      font-weight: bold;
+      color: #e6af2e;
+    }
+    .btn-girar {
+      background: #e6af2e;
+      color: #000;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn-girar:disabled {
+      background: #444;
+      color: #888;
+      cursor: not-allowed;
+    }
+    .mensagem {
+      margin-top: 15px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #00bfa5;
+    }
+    .voltar {
+      margin-top: 25px;
+      color: #aaa;
+      text-decoration: underline;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Roleta de Boas-Vindas</h1>
+  <p>Ganhe R$ 2,00 exclusivos para novos cadastros (1 por aparelho).</p>
+
+  <div style="position: relative;">
+    <div class="ponteiro"></div>
+    <div class="roleta-container" id="roleta">
+      <div class="premio-texto">R$ 2,00</div>
+    </div>
+  </div>
+
+  <button class="btn-girar" id="btnGirar" onclick="girarRoleta()">GIRAR ROLETA</button>
+  <div class="mensagem" id="msgResultado"></div>
+
+  <a class="voltar" onclick="window.location.href='index.html'">Voltar para o Início</a>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Verifica se este aparelho já resgatou o bônus
+      if (localStorage.getItem('mxp_bonus_resgatado') === 'true') {
+        document.getElementById('btnGirar').disabled = true;
+        document.getElementById('msgResultado').style.color = '#ff4d4d';
+        document.getElementById('msgResultado').innerText = "Este aparelho já resgatou o bônus de R$ 2,00!";
+      }
+    });
+
+    function girarRoleta() {
+      if (localStorage.getItem('mxp_bonus_resgatado') === 'true') return;
+
+      const btn = document.getElementById('btnGirar');
+      const roleta = document.getElementById('roleta');
+      const msg = document.getElementById('msgResultado');
+
+      btn.disabled = true;
+
+      // Efeito giro (dá várias voltas completas + um deslocamento fixo para cair em R$ 2,00)
+      const voltasAleatorias = 360 * 5; 
+      const anguloFinal = voltasAleatorias + 360; 
+
+      roleta.style.transform = `rotate(${anguloFinal}deg)`;
+
+      setTimeout(() => {
+        // Trava o aparelho para nunca mais girar
+        localStorage.setItem('mxp_bonus_resgatado', 'true');
+
+        // Simula a adição de saldo (se você usar localStorage para o saldo geral)
+        let saldoAtual = parseFloat(localStorage.getItem('mxp_saldo') || '0.00');
+        saldoAtual += 2.00;
+        localStorage.setItem('mxp_saldo', saldoAtual.toFixed(2));
+
+        msg.style.color = '#00bfa5';
+        msg.innerText = "Parabéns! Você ganhou R$ 2,00 adicionados à sua conta!";
+      }, 4000); // Tempo sincronizado com a animação CSS (4 segundos)
+    }
+  </script>
+</body>
+</html>
