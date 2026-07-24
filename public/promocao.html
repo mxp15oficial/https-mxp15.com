@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mxp$15 - Promoções</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --bg: #0b0e14; 
+            --card: #161b22; 
+            --accent: #007bff; 
+            --text: #fff; 
+            --text-muted: #8b949e; 
+            --gold: #ffcc00; 
+        }
+        body { background-color: var(--bg); color: var(--text); font-family: sans-serif; padding: 15px; margin: 0; padding-bottom: 70px; }
+        
+        /* Navegação Superior com Rolagem e Links */
+        .header-nav { display: flex; gap: 20px; font-size: 0.9em; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 15px; color: var(--text-muted); overflow-x: auto; white-space: nowrap; z-index: 9999; position: relative; scrollbar-width: none; }
+        .header-nav::-webkit-scrollbar { display: none; }
+        .header-nav span { cursor: pointer; transition: color 0.2s; }
+        .header-nav span:hover { color: var(--text); }
+        .header-nav span.ativo { color: var(--accent); font-weight: bold; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+
+        /* Lista de Cards de Promoções */
+        .lista-promocoes { display: flex; flex-direction: column; gap: 15px; }
+
+        .card-promo { 
+            background: linear-gradient(135deg, #1b315c, var(--card)); 
+            border: 1px solid #2d4f8a; 
+            border-radius: 12px; 
+            padding: 16px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card-promo:active { transform: scale(0.98); }
+
+        .promo-info h2 { margin: 0 0 8px 0; font-size: 1.3em; color: var(--gold); }
+        .promo-info p { margin: 0; font-size: 0.8em; color: var(--text-muted); line-height: 1.4; max-width: 210px; }
+
+        .promo-icone-box { 
+            background: #161b22; 
+            border: 1px solid #30363d; 
+            border-radius: 12px; 
+            width: 75px; 
+            height: 75px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0;
+            font-size: 2em;
+            color: var(--gold);
+        }
+
+        /* Menu Inferior Fixo */
+        .footer-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background: #12161f; 
+            border-top: 1px solid #30363d; 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 8px 0; 
+            z-index: 999; 
+            box-sizing: border-box;
+        }
+        .footer-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.7em; cursor: pointer; gap: 4px; text-decoration: none; }
+        .footer-item.ativo { color: var(--accent); }
+        .footer-item i { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior Corrigida com a aba Pendente -->
+    <div class="header-nav">
+        <span onclick="window.location.href='promocao.html'" class="ativo">Eventos</span>
+        <span onclick="window.location.href='rebate.html'">Rebate</span>
+        <span onclick="window.location.href='vip.html'">VIP</span>
+        <span onclick="window.location.href='resgate.html'">Código de Resgate</span>
+        <span onclick="window.location.href='pendente.html'">Histórico</span>
+        <span onclick="window.location.href='pendente.html'">Pendente</span>
+    </div>
+
+    <!-- Lista de Promoções da Tela -->
+    <div class="lista-promocoes">
+        
+        <!-- Card 1 -->
+        <div class="card-promo" onclick="alert('Abrindo Recompensa de Recarga...')">
+            <div class="promo-info">
+                <h2>R$ 2777</h2>
+                <p>RECOMPENSA DE RECARGA</p>
+            </div>
+            <div class="promo-icone-box">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-promo" onclick="alert('Abrindo Bônus de Convite...')">
+            <div class="promo-info">
+                <h2>R$ 30 BÔNUS</h2>
+                <p>CONVIDE UM AMIGO FÁCIL E LUCRATIVO</p>
+            </div>
+            <div class="promo-icone-box">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-promo" onclick="alert('Abrindo VIP Bônus...')">
+            <div class="promo-info">
+                <h2>VIP BÔNUS</h2>
+                <p>TODOS OS MESES TODAS AS SEMANAS E TODOS OS DIAS</p>
+            </div>
+            <div class="promo-icone-box">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-promo" onclick="alert('Abrindo Bônus Mensal dia 5...')">
+            <div class="promo-info">
+                <h2>R$ 555.555</h2>
+                <p>DIA 5 DE CADA MÊS AGRADECE AOS USUÁRIOS</p>
+            </div>
+            <div class="promo-icone-box">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Barra de Navegação Inferior -->
+    <div class="footer-nav">
+        <a class="footer-item" href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Início</span>
+        </a>
+        <a class="footer-item ativo" href="promocao.html">
+            <i class="fa-solid fa-gift"></i>
+            <span>Promoção</span>
+        </a>
+        <a class="footer-item" href="deposito.html">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Depósito</span>
+        </a>
+        <a class="footer-item" href="saque.html">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>Saque</span>
+        </a>
+        <a class="footer-item" href="perfil.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Perfil</span>
+        </a>
+    </div>
+
+</body>
+                  </html>
+                  
