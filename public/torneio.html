@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mxp$15 - Torneio Exclusivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --bg: #0b0e14; 
+            --card: #161b22; 
+            --accent: #007bff; 
+            --text: #fff; 
+            --text-muted: #8b949e; 
+            --gold: #ffcc00; 
+            --verde: #2ea043;
+            --vermelho: #f85149;
+        }
+        body { background-color: var(--bg); color: var(--text); font-family: sans-serif; padding: 15px; margin: 0; padding-bottom: 80px; }
+
+        /* TELA DE BLOQUEIO POR SENHA (DIRETOR) */
+        #telaSenha {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 14, 20, 0.95); z-index: 99999;
+            display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;
+        }
+        .box-senha {
+            background: var(--card); border: 2px solid var(--gold); border-radius: 16px;
+            padding: 25px; width: 100%; max-width: 380px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .box-senha h2 { color: var(--gold); margin-top: 0; font-size: 1.4em; }
+        .box-senha p { color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px; }
+        .box-senha input {
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #30363d;
+            background: #0b0e14; color: #fff; font-size: 16px; text-align: center; margin-bottom: 15px; box-sizing: border-box;
+        }
+        .box-senha button {
+            width: 100%; background: var(--gold); color: #000; border: none;
+            padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; text-transform: uppercase;
+        }
+
+        /* CONTEÚDO PRINCIPAL DO TORNEIO (Oculto até digitar a senha) */
+        #conteudoTorneio { display: none; }
+
+        /* BANNER DO CAMPEÃO (Exposto bem grande em cima) */
+        .banner-campeao {
+            background: linear-gradient(135deg, #3d2b00, #161b22);
+            border: 2px solid var(--gold); border-radius: 14px; padding: 20px;
+            text-align: center; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(255,204,0,0.2);
+        }
+        .banner-campeao span { font-size: 0.8em; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
+        .banner-campeao h1 { margin: 8px 0 0 0; font-size: 2em; color: #fff; text-shadow: 0 2px 10px rgba(255,204,0,0.5); }
+
+        /* PAINEL DE DEPÓSITO MÍNIMO R$ 100 */
+        .painel-deposito-torneio {
+            background: var(--card); border: 1px solid #30363d; border-radius: 12px;
+            padding: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .info-dep h3 { margin: 0 0 4px 0; font-size: 0.95em; color: var(--text); }
+        .info-dep p { margin: 0; font-size: 0.75em; color: var(--vermelho); font-weight: bold; }
+        .btn-dep-100 {
+            background: var(--verde); color: #fff; border: none; padding: 10px 16px;
+            border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.9em; text-decoration: none;
+        }
+
+        /* GRADE DE JOGOS DO TORNEIO (10 a 20 jogos) */
+        .titulo-secao { font-size: 1.1em; color: var(--gold); margin-bottom: 12px; font-weight: bold; border-left: 3px solid var(--gold); padding-left: 8px; }
+        .grade-jogos {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;
+        }
+        .card-jogo {
+            background: var(--card); border: 1px solid #30363d; border-radius: 10px;
+            overflow: hidden; text-align: center; cursor: pointer; transition: transform 0.2s;
+        }
+        .card-jogo:active { transform: scale(0.97); }
+        .card-jogo img { width: 100%; height: 110px; object-fit: cover; display: block; }
+        .card-jogo span { display: block; padding: 10px 5px; font-size: 0.85em; font-weight: bold; color: var(--text); }
+
+        /* Menu Inferior Fixo */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #0d1b33; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #1a3a66; z-index: 999; }
+        .bottom-nav a { color: #fff; text-decoration: none; text-align: center; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+
+    <!-- TELA DE ACESSO RESTRITO (SENHA DO DIRETOR) -->
+    <div id="telaSenha">
+        <div class="box-senha">
+            <h2>Área Exclusiva</h2>
+            <p>Digite a senha enviada no grupo do WhatsApp para acessar o Torneio.</p>
+            <input type="password" id="inputSenhaTorneio" placeholder="Senha de acesso">
+            <button onclick="validarSenha()">Entrar no Torneio</button>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO DO TORNEIO (Liberado após a senha) -->
+    <div id="conteudoTorneio">
+
+        <!-- Banner do Campeão (Exposto bem grande em cima) -->
+        <div class="banner-campeao">
+            <span>🏆 Grande Campeão do Torneio 🏆</span>
+            <h1 id="nomeCampeaoTexto">EM DISPUTA...</h1>
+        </div>
+
+        <!-- Bloco de Depósito Exclusivo (Mínimo R$ 100) -->
+        <div class="painel-deposito-torneio">
+            <div class="info-dep">
+                <h3>Entrada do Torneio</h3>
+                <p>Valor Mínimo Obrigatório: R$ 100,00</p>
+            </div>
+            <a href="deposito.html?valor=100" class="btn-dep-100">Depositar R$ 100</a>
+        </div>
+
+        <!-- Seção de Jogos do Torneio -->
+        <div class="titulo-secao">Jogos Oficiais do Torneio (10 Jogos)</div>
+        <div class="grade-jogos" id="listaJogosTorneio">
+            <!-- Os 10 a 20 jogos serão carregados dinamicamente via script -->
+        </div>
+
+    </div>
+
+    <!-- Menu Inferior -->
+    <div class="bottom-nav">
+        <a href="home.html">🏠<br>Início</a>
+        <a href="promocao.html">🎁<br>Promoção</a>
+        <a href="deposito.html">💰<br>Depósito</a>
+        <a href="saque.html">💸<br>Saque</a>
+        <a href="perfil.html">👤<br>Perfil</a>
+    </div>
+
+    <script>
+        // SENHA DEFINIDA PELO DIRETOR (Você pode alterar aqui quando quiser mandar outra no WhatsApp)
+        const SENHA_MESTRE = "mxp2026torneio";
+
+        function validarSenha() {
+            const digitada = document.getElementById('inputSenhaTorneio').value;
+            if (digitada === SENHA_MESTRE) {
+                document.getElementById('telaSenha').style.display = 'none';
+                document.getElementById('conteudoTorneio').style.display = 'block';
+                sessionStorage.setItem('torneio_liberado', 'true');
+            } else {
+                alert("Senha incorreta! Solicite a senha correta no grupo do WhatsApp.");
+            }
+        }
+
+        // Verifica se já digitou a senha na sessão atual
+        window.onload = function() {
+            if (sessionStorage.getItem('torneio_liberado') === 'true') {
+                document.getElementById('telaSenha').style.display = 'none';
+                document.getElementById('conteudoTorneio').style.display = 'block';
+            }
+            carregarJogos();
+            carregarCampeao();
+        };
+
+        // Função para carregar os 10 a 20 jogos do torneio
+        function carregarJogos() {
+            const container = document.getElementById('listaJogosTorneio');
+            
+            // Lista com 10 jogos oficiais de exemplo para o torneio
+            const jogosTorneio = [
+                { nome: "Gates of Olympus", img: "c9ca71e2-f671-4557-aabd-f519175b2f36.png" },
+                { nome: "Sweet Bonanza", img: "f8f665aa-8f06-4139-add4-6c8c75fe06c8.png" },
+                { nome: "Fortune Tiger", img: "e4a23320-cc87-4b46-b800-ab5faed9362e.png" },
+                { nome: "Fortune Ox", img: "e52286c8-05d1-4b14-a02b-868c339bc234.png" },
+                { nome: "Fortune Rabbit", img: "images (1).jpeg" },
+                { nome: "Spaceman", img: "c9ca71e2-f671-4557-aabd-f519175b2f36.png" },
+                { nome: "Mines", img: "f8f665aa-8f06-4139-add4-6c8c75fe06c8.png" },
+                { nome: "Aviator", img: "e4a23320-cc87-4b46-b800-ab5faed9362e.png" },
+                { nome: "Fortune Mouse", img: "e52286c8-05d1-4b14-a02b-868c339bc234.png" },
+                { nome: "Starlight Princess", img: "images (1).jpeg" }
+            ];
+
+            container.innerHTML = '';
+            jogosTorneio.forEach(jogo => {
+                container.innerHTML += `
+                    <div class="card-jogo" onclick="alert('Iniciando rodada no torneio: ${jogo.nome}')">
+                        <img src="${jogo.img}" alt="${jogo.nome}">
+                        <span>${jogo.nome}</span>
+                    </div>
+                `;
+            });
+        }
+
+        // Função que define o nome do campeão (Você diretor pode alterar quando o torneio acabar)
+        function carregarCampeao() {
+            // Se o torneio acabou, coloque o nome do ganhador aqui entre as aspas. Se estiver em disputa, deixe "EM DISPUTA..."
+            let campeaoDoTorneio = localStorage.getItem('mxp_campeao_atual') || "EM DISPUTA...";
+            document.getElementById('nomeCampeaoTexto').innerText = campeaoDoTorneio;
+        }
+    </script>
+</body>
+</html>
