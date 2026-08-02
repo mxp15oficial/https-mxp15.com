@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "jogo": "Fortune Tiger",
+    "provedor": "PG Soft",
+    "status": "Online",
+    "url": "https://static.pgsoft-games.com/games/tiger/index.html?ot=en&btt=1&from=https://m.pgsoft-games.com"
+  },
+  {
+    "id": 2,
+    "jogo": "Fortune Ox",
+    "provedor": "PG Soft",
+    "status": "Online",
+    "url": "https://static.pgsoft-games.com/games/ox/index.html?ot=en&btt=1&from=https://m.pgsoft-games.com"
+  },
+  {
+    "id": 3,
+    "jogo": "Fortune Rabbit",
+    "provedor": "PG Soft",
+    "status": "Online",
+    "url": "https://static.pgsoft-games.com/games/rabbit/index.html?ot=en&btt=1&from=https://m.pgsoft-games.com"
+  },
+  {
+    "id": 4,
+    "jogo": "Fortune Dragon",
+    "provedor": "PG Soft",
+    "status": "Online",
+    "url": "https://static.pgsoft-games.com/games/dragon/index.html?ot=en&btt=1&from=https://m.pgsoft-games.com"
+  },
+  {
+    "id": 5,
+    "jogo": "Money Coming",
+    "provedor": "TaDa",
+    "status": "Online",
+    "url": "https://tada-games.com/moneycoming/index.html"
+  },
+  {
+    "id": 6,
+    "jogo": "Fortune Gems 3",
+    "provedor": "TaDa",
+    "status": "Online",
+    "url": "https://tada-games.com/fortunegems3/index.html"
+  }
+]
