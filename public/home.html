@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Jogos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <h1>Bem-vindo à Plataforma!</h1>
+    <p>Estes são os jogos sincronizados via GitHub:</p>
+
+    <!-- Onde os jogos do GitHub vão aparecer -->
+    <div id="container-jogos">Carregando jogos...</div>
+
+    <br>
+    <button onclick="localStorage.removeItem('usuario'); window.location.href='index.html';">Sair (Logout)</button>
+
+    <script>
+        const urlGitHub = "https://raw.githubusercontent.com/mxp15oficial/https-mxp15.com/refs/heads/main/public/jogos.json";
+
+        async function buscarJogosDoGitHub() {
+            try {
+                let resposta = await fetch(urlGitHub);
+                let jogos = await resposta.json();
+
+                let htmlJogos = "";
+                jogos.forEach(j => {
+                    htmlJogos += `
+                        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; border-radius: 5px;">
+                            <h3>${j.jogo}</h3>
+                            <p>Provedor: ${j.provedor}</p>
+                            <span style="color: green;">● ${j.status}</span><br><br>
+                            <button onclick="alert('Abrindo o jogo ${j.jogo}...')">Jogar</button>
+                        </div>
+                    `;
+                });
+
+                document.getElementById("container-jogos").innerHTML = htmlJogos;
+            } catch (erro) {
+                document.getElementById("container-jogos").innerHTML = "Erro ao carregar os jogos do GitHub.";
+            }
+        }
+
+        buscarJogosDoGitHub();
+    </script>
+
+</body>
+</html>
