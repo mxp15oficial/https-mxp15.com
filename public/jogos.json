@@ -1,4 +1,16 @@
 [
-  {"id": 101, "jogo": "Fortune Tiger", "provedor": "PG Soft", "status": "Online"},
-  {"id": 102, "jogo": "Fortune Ox", "provedor": "PG Soft", "status": "Online"}
+  {
+    "id": 101, 
+    "jogo": "Fortune Tiger", 
+    "provedor": "PG Soft", 
+    "status": "Online",
+    "url": "https://exemplo.com/jogos/fortune-tiger"
+  },
+  {
+    "id": 102, 
+    "jogo": "Fortune Ox", 
+    "provedor": "PG Soft", 
+    "status": "Online",
+    "url": "https://exemplo.com/jogos/fortune-ox"
+  }
 ]
