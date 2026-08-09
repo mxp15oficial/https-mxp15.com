@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MXP$15</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .categorias { display: flex; overflow-x: auto; gap: 10px; padding: 10px 15px; white-space: nowrap; scrollbar-width: none; }
+    .categorias::-webkit-scrollbar { display: none; }
+    .categorias button { flex: 0 0 auto; padding: 8px 16px; border-radius: 20px; border: none; background: #1e1e2f; color: #fff; cursor: pointer; font-weight: bold; }
+    .categorias button.active { background: #e6af2e; color: #000; }
+    .search-box { padding: 0 15px; margin: 10px 0; }
+    .search-box input { width: 100%; padding: 10px 15px; border-radius: 20px; border: 1px solid #333; background: #181824; color: #fff; font-size: 14px; }
+    .games-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 10px; }
+    .game-card { background: #181824; border-radius: 12px; overflow: hidden; text-align: center; display: none; position: relative; cursor: pointer; aspect-ratio: 1/1; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .game-card.visible { display: block; }
+    .game-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; }
+    .game-card:hover img { transform: scale(1.05); }
+    .btn-mostrar-mais { display: block; width: 90%; margin: 15px auto; padding: 10px; background: #22223b; color: #e6af2e; border: 1px solid #e6af2e; border-radius: 8px; cursor: pointer; font-weight: bold; text-align: center; }
+    .live-winner-bar { background: linear-gradient(90deg, #181824, #2a2a40, #181824); border-top: 1px solid #e6af2e33; border-bottom: 1px solid #e6af2e33; color: #fff; padding: 8px 15px; font-size: 12px; display: flex; align-items: center; gap: 10px; overflow: hidden; white-space: nowrap; margin-bottom: 10px; }
+    .live-winner-bar .badge { background: #e6af2e; color: #000; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-size: 10px; text-transform: uppercase; }
+    .menu-bottom { position: fixed; bottom: 0; left: 0; width: 100%; background: #12121a; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #22223b; z-index: 1000; }
+    .menu-bottom a { color: #888; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .menu-bottom a.active { color: #e6af2e; }
+    body { padding-bottom: 70px; background-color: #0b0b10; color: #fff; font-family: sans-serif; margin: 0; }
+    header.topo { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #12121a; }
+    header.topo .logo { font-weight: bold; font-size: 18px; color: #e6af2e; }
+    header.topo .saldo { background: #181824; padding: 5px 10px; border-radius: 8px; font-size: 14px; color: #e6af2e; }
+    .acoes { display: flex; gap: 10px; padding: 0 15px; margin-bottom: 10px; }
+    .acoes button { flex: 1; padding: 10px; border-radius: 8px; border: none; background: #1e1e2f; color: #fff; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="logo">MXP$15</div>
+    <div class="saldo" id="saldoTotal">R$ 15.066,60</div>
+  </header>
+
+  <section class="acoes">
+    <button onclick="window.location.href='deposito.html'">Depósito</button>
+    <button onclick="window.location.href='saque.html'">Saque</button>
+  </section>
+  
+  <div class="live-winner-bar">
+    <span class="badge">AO VIVO</span>
+    <span id="liveWinnerTicker" class="live-winner-text">Carregando premiados...</span>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="inputBusca" placeholder="Pesquisar jogo..." onkeyup="pesquisarJogos()">
+  </div>
+
+  <section class="categorias" id="barraCategorias">
+    <button class="active" onclick="filtrarCategoria('popular', this)">🔥 Popular</button>
+    <button onclick="filtrarCategoria('pg', this)">🐯 PG</button>
+    <button onclick="filtrarCategoria('pp', this)">👑 PP</button>
+    <button onclick="filtrarCategoria('g759', this)">🎮 G759</button>
+  </section>
+
+  <section class="games-section" style="margin-bottom: 30px;">
+    <h2 id="tituloCategoria" style="padding-left: 15px; font-size: 16px; color: #fff; margin-bottom: 10px;">🔥 Jogos Populares</h2>
+
+    <div class="games-grid" id="gridJogos">
+      <!-- LINHA 1 COM LINKS DIRETOS ATUALIZADOS -->
+      <div class="game-card visible" data-cat="popular" data-nome="fortune dragon" onclick="window.location.href='https://l830fs-2jifs89ff-fsko39fslf3oofs.vip/game/action/2278'"><img src="i8r11737059598256391.jpg" alt="Fortune Dragon"></div>
+      <div class="game-card visible" data-cat="popular" data-nome="fortune ox" onclick="window.location.href='https://l830fs-2jifs89ff-fsko39fslf3oofs.vip/game/action/2198'"><img src="mrbl1737127341249440.jpg" alt="Fortune Ox"></div>
+      <div class="game-card visible" data-cat="popular" data-nome="fortune tiger" onclick="window.location.href='https://l830fs-2jifs89ff-fsko39fslf3oofs.vip/game/action/2196'"><img src="e5pm1737062486659465.jpg" alt="Fortune Tiger"></div>
+      <div class="game-card visible" data-cat="popular" data-nome="fortune rabbit" onclick="window.location.href='https://smkew-few9i3-f-weji-fsji0fwe.vip/game/action/2197'"><img src="poxj1737062437636924.jpg" alt="Fortune Rabbit"></div>
+      
+      <!-- LINHA 2 COM LINKS DIRETOS ATUALIZADOS -->
+      <div class="game-card" data-cat="popular" data-nome="mr treasure's fortune" onclick="window.location.href='https://dajdnada659.net/game/action/5549'"><img src="3nr01742767772061902.jpg" alt="Mr Treasure's Fortune"></div>
+      <div class="game-card" data-cat="popular" data-nome="fortune garuda 500" onclick="window.location.href='https://smkew-few9i3-f-weji-fsji0fwe.vip/game/action/7687'"><img src="TADA_Fortune_Garuda_500.webp" alt="Fortune Garuda 500"></div>
+      <div class="game-card" data-cat="popular" data-nome="fortune snake" onclick="window.location.href='jogo.html'"><img src="ii2o1736816422665422.png" alt="Fortune Snake"></div>
+      <div class="game-card" data-cat="popular" data-nome="pinata wins" onclick="window.location.href='jogo.html'"><img src="smju1737062727841598.jpg" alt="Pinata Wins"></div>
+      
+      <!-- LINHA 3 -->
+      <div class="game-card" data-cat="popular" data-nome="wild bounty showdown" onclick="window.location.href='jogo.html'"><img src="nths1737063141448026.jpg" alt="Wild Bounty Showdown"></div>
+      <div class="game-card" data-cat="popular" data-nome="wild bandito" onclick="window.location.href='jogo.html'"><img src="bs4f1737062933046324.jpg" alt="Wild Bandito"></div>
+      <div class="game-card" data-cat="popular" data-nome="lucky neko" onclick="window.location.href='jogo.html'"><img src="i69s1737062771765659.jpg" alt="Lucky Neko"></div>
+      <div class="game-card" data-cat="popular" data-nome="cash mania" onclick="window.location.href='jogo.html'"><img src="zp2w1737062531454992.jpg" alt="Cash Mania"></div>
+
+      <!-- MIDAS FORTUNE -->
+      <div class="game-card" data-cat="popular" data-nome="midas fortune" onclick="window.location.href='https://smkew-few9i3-f-weji-fsji0fwe.vip/game/action/2206'"><img src="av801737063240529581.jpg" alt="Midas Fortune"></div>
+      
+      <div class="game-card" data-cat="popular" data-nome="anubis wrath" onclick="window.location.href='jogo.html'"><img src="r5ih1737062747820198.jpg" alt="Anubis Wrath"></div>
+      <div class="game-card" data-cat="popular" data-nome="double fortune" onclick="window.location.href='jogo.html'"><img src="ju721737063169955503.jpg" alt="Double Fortune"></div>
+      <div class="game-card" data-cat="popular" data-nome="3 lightning blitz" onclick="window.location.href='jogo.html'"><img src="TADA_3_Lightning_Blitz.webp" alt="3 Lightning Blitz"></div>
+
+      <!-- LINHA 5 -->
+      <div class="game-card" data-cat="popular" data-nome="3 pot panda" onclick="window.location.href='jogo.html'"><img src="TADA_3_Pot_Panda.webp" alt="3 Pot Panda"></div>
+      <div class="game-card" data-cat="popular" data-nome="bison fortune coins" onclick="window.location.href='jogo.html'"><img src="TADA_Bison_Fortune_Coins.webp" alt="Bison Fortune Coins"></div>
+      <div class="game-card" data-cat="popular" data-nome="lucky tiger" onclick="window.location.href='jogo.html'"><img src="JILI_Lucky_Tiger.jpg" alt="Lucky Tiger"></div>
+      <div class="game-card" data-cat="popular" data-nome="lucky jaguar 2" onclick="window.location.href='jogo.html'"><img src="JILI_Lucky_Jaguar_2.jpg" alt="Lucky Jaguar 2"></div>
+
+      <!-- LINHA 6 -->
+      <div class="game-card" data-cat="popular" data-nome="fortune gems 500" onclick="window.location.href='jogo.html'"><img src="rt9e1775281390623878.jpg" alt="Fortune Gems 500"></div>
+      <div class="game-card" data-cat="popular" data-nome="devil fire twins" onclick="window.location.href='jogo.html'"><img src="140p1736816485674188.png" alt="Devil Fire Twins"></div>
+      <div class="game-card" data-cat="popular" data-nome="money coming" onclick="window.location.href='jogo.html'"><img src="z4bg1736816494007669.png" alt="Money Coming"></div>
+      <div class="game-card" data-cat="popular" data-nome="fortune gems" onclick="window.location.href='jogo.html'"><img src="JILI_Fortune_Gems_500.jpg" alt="Fortune Gems"></div>
+    </div>
+    <button class="btn-mostrar-mais" id="btnExpandir" onclick="alternarExpandir()">Mostrar Tudo ▼</button>
+  </section>
+
+  <nav class="menu-bottom">
+    <a href="home.html" class="active">🏠 <span>Início</span></a>
+    <a href="promocao.html">🎁 <span>Promoção</span></a>
+    <a href="convite.html">👥 <span>Convidar</span></a>
+    <a href="perfil.html">👤 <span>Perfil</span></a>
+  </nav>
+
+  <script>
+    let categoriaAtual = 'popular'; 
+    let expandido = false;
+    const players = ["Carlos_99", "Ana_Silva", "Lucas_Bet", "MarianaX"];
+    
+    function gerarNoticiaAoVivo() {
+      const player = players[Math.floor(Math.random() * players.length)];
+      const tickerElement = document.getElementById('liveWinnerTicker');
+      if (tickerElement) tickerElement.innerText = `🎉 ${player} ganhou R$ 235,48 agora mesmo!`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      gerarNoticiaAoVivo();
+      setInterval(gerarNoticiaAoVivo, 3500);
+      atualizarExibicaoJogos();
+    });
+
+    function filtrarCategoria(cat, elemento) {
+      categoriaAtual = cat; 
+      expandido = false;
+      document.getElementById('btnExpandir').innerText = "Mostrar Tudo ▼";
+      document.querySelectorAll('.categorias button').forEach(b => b.classList.remove('active'));
+      elemento.classList.add('active');
+      atualizarExibicaoJogos();
+    }
+
+    function atualizarExibicaoJogos() {
+      const cards = document.querySelectorAll('#gridJogos .game-card');
+      let visiveisContador = 0;
+      cards.forEach(card => {
+        const catCard = card.getAttribute('data-cat');
+        if (catCard && catCard.includes(categoriaAtual)) {
+          if (expandido || visiveisContador < 4) { card.classList.add('visible'); visiveisContador++; }
+          else { card.classList.remove('visible'); }
+        } else { card.classList.remove('visible'); }
+      });
+      document.getElementById('btnExpandir').style.display = (document.querySelectorAll('.game-card').length > 4) ? 'block' : 'none';
+    }
+
+    function alternarExpandir() {
+      expandido = !expandido;
+      document.getElementById('btnExpandir').innerText = expandido ? "Recolher ▲" : "Mostrar Tudo ▼";
+      atualizarExibicaoJogos();
+    }
+
+    function pesquisarJogos() {
+      const termo = document.getElementById('inputBusca').value.toLowerCase();
+      const cards = document.querySelectorAll('#gridJogos .game-card');
+      if (termo === "") { atualizarExibicaoJogos(); return; }
+      cards.forEach(card => { card.classList.toggle('visible', card.getAttribute('data-nome').includes(termo)); });
+      document.getElementById('btnExpandir').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
